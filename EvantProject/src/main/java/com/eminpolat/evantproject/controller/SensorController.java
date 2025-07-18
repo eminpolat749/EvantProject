@@ -17,11 +17,12 @@ public class SensorController {
 
     @GetMapping("/getAll")
     public List<Sensor> getAll() {
-        return sensorService.getSensors();
+        return sensorService.getAllData();
     }
 
-    @PostMapping("/save")
-    public void saveToDb() {
-        sensorService.saveToDb();
+    @GetMapping("/latest")
+    public Sensor getLatest()
+    {
+        return sensorService.getLatestSensor();
     }
 }

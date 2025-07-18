@@ -16,9 +16,9 @@ public class Sensor {
     private double temperature;
     @Column(name = "humidity")
     private double humidity;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "measurement_time")
-    private LocalDateTime measurement_time;
+    private LocalDateTime measurementTime;
 
     public Sensor() {
     }
@@ -27,7 +27,7 @@ public class Sensor {
         this.id = id;
         this.temperature = temperature;
         this.humidity = humidity;
-        this.measurement_time = measurement_time;
+        this.measurementTime = measurement_time;
     }
 
     public int getId() {
@@ -55,11 +55,11 @@ public class Sensor {
     }
 
     public LocalDateTime getMeasurement_time() {
-        return measurement_time;
+        return measurementTime;
     }
 
     public void setMeasurement_time(LocalDateTime measurement_time) {
-        this.measurement_time = measurement_time;
+        this.measurementTime = measurement_time;
     }
 }
 
