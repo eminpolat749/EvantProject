@@ -1,4 +1,4 @@
-package com.eminpolat.evantproject;
+package com.eminpolat.evantproject.configuration;
 
 import com.eminpolat.evantproject.business.SensorService;
 import org.springframework.scheduling.annotation.Scheduled;

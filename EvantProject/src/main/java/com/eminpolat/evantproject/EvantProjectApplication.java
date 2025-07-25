@@ -12,4 +12,6 @@ public class EvantProjectApplication {
         SpringApplication.run(EvantProjectApplication.class, args);
     }
 
+    // {"humidity":69.4,"sensor_id":101,"temperature":28.5}
+
 }
