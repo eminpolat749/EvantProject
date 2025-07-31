@@ -1,14 +1,19 @@
-package com.eminpolat.evantproject.business;
+package com.eminpolat.evantproject.business.concretes;
 
+import com.eminpolat.evantproject.business.abstracts.SensorService;
+import com.eminpolat.evantproject.business.responses.SensorResponse;
+import com.eminpolat.evantproject.core.utilities.mapper.SensorMapperManager;
 import com.eminpolat.evantproject.dataAccess.SensorRepository;
-import com.eminpolat.evantproject.dto.SensorDto;
+import com.eminpolat.evantproject.business.requests.SensorRequest;
 import com.eminpolat.evantproject.entites.Sensor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SensorManager implements SensorService {
@@ -24,7 +29,7 @@ public class SensorManager implements SensorService {
     public void fetchAndSave()
     {
         try {
-            SensorDto dto = restTemplate.getForObject(url, SensorDto.class);
+            SensorRequest dto = restTemplate.getForObject(url, SensorRequest.class);
             if (dto != null) {
                 Sensor sensor = new Sensor();
                 sensor.setSensorId(dto.getSensorId());
@@ -41,12 +46,17 @@ public class SensorManager implements SensorService {
         }
     }
 
-    public List<Sensor> getAllData() {
-        return sensorRepository.findAll();
+    @Override
+    public List<SensorResponse> getAllData() {
+        return sensorRepository.findAll().stream()
+                .map(SensorMapperManager::toDto)
+                .collect(Collectors.toList());
     }
 
-    public Sensor getLatestSensor() {
-        return sensorRepository.findTopByOrderByMeasurementTimeDesc();
+    @Override
+    public SensorResponse getLatestSensor() {
+        Sensor latestSensor = sensorRepository.findTopByOrderByMeasurementTimeDesc();
+        return SensorMapperManager.toDto(latestSensor);
     }
 }
 

@@ -1,13 +1,14 @@
 package com.eminpolat.evantproject.controller;
 
-import com.eminpolat.evantproject.business.SensorService;
-import com.eminpolat.evantproject.entites.Sensor;
+import com.eminpolat.evantproject.business.abstracts.SensorService;
+import com.eminpolat.evantproject.business.responses.SensorResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/evant")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class SensorController {
     private SensorService sensorService;
 
@@ -16,12 +17,12 @@ public class SensorController {
     }
 
     @GetMapping("/getAll")
-    public List<Sensor> getAll() {
+    public List<SensorResponse> getAll() {
         return sensorService.getAllData();
     }
 
     @GetMapping("/latest")
-    public Sensor getLatest()
+    public SensorResponse getLatest()
     {
         return sensorService.getLatestSensor();
     }

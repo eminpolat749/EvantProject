@@ -1,18 +1,18 @@
-package com.eminpolat.evantproject.dto;
+package com.eminpolat.evantproject.business.requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SensorDto {
+public class SensorRequest {
     @JsonProperty("sensor_id")
     private int sensorId;
     private double temperature;
     private double humidity;
 
-    public SensorDto() {}
+    public SensorRequest() {}
 
-    public SensorDto(int sensorId, double temperature, double humidity) {
+    public SensorRequest(int sensorId, double temperature, double humidity) {
         this.sensorId = sensorId;
         this.temperature = temperature;
         this.humidity = humidity;

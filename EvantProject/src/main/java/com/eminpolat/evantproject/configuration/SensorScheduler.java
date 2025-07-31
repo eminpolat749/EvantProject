@@ -1,6 +1,6 @@
 package com.eminpolat.evantproject.configuration;
 
-import com.eminpolat.evantproject.business.SensorService;
+import com.eminpolat.evantproject.business.abstracts.SensorService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
