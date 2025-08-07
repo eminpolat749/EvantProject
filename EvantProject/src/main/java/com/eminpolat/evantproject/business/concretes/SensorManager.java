@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 public class SensorManager implements SensorService {
     private SensorRepository sensorRepository;
     private RestTemplate restTemplate;
-    private final String url = "https://isi-nem-88c9f-default-rtdb.europe-west1.firebasedatabase.app/sensor101.json";
+    private final String url = "https://isi-nem-88c9f-default-rtdb.europe-west1.firebasedatabase.app/sensor_data/sensor101.json";
 
     public SensorManager(SensorRepository sensorRepository, RestTemplate restTemplate) {
         this.sensorRepository = sensorRepository;
